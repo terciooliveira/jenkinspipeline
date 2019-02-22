@@ -10,10 +10,12 @@ pipeline {
          pollSCM('* * * * *') // Polling Source Control
      }
 
-stages{
+    stages{
         stage('Build'){
             steps {
-                sh 'mvn clean package'
+		withMaven(maven:'localMaven') {
+	                sh 'mvn clean package'
+		}
             }
             post {
                 success {
