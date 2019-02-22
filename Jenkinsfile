@@ -18,9 +18,7 @@ pipeline {
     stages{
         stage('Build'){
             steps {
-		withMaven(maven:'localMaven') {
-	            sh 'mvn clean package'
-		}
+	        sh 'mvn clean package'
             }
             post {
                 success {
